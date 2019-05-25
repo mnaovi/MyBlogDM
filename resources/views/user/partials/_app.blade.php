@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
   <head>
     @include('user.partials._head')
@@ -6,7 +6,7 @@
   <body>
 
     @include('user.partials._navbar')
-
+    @include('user.partials._messages')
      @section('body')
 
      @show
