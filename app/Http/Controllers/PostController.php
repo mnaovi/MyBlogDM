@@ -9,6 +9,7 @@ use App\Category;
 use Session;
 use Purifier;
 use Image;
+use Storage;
 
 
 class PostController extends Controller
@@ -54,7 +55,9 @@ class PostController extends Controller
            'title'       => 'required',
            'slug'        => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
            'category_id' => 'required|integer',
-           'body'        => 'required'   
+           'body'        => 'required',
+           'image'        => 'sometimes|image'  
+
 
         ]);
 
@@ -148,6 +151,19 @@ class PostController extends Controller
         $post->category_id = $request->category_id;
         $post->body        = Purifier::clean($request->body);
 
+        if($request->hasFile('image')){
+           $image = $request->image;
+           $filename = time() . '.' . $image->getClientOriginalExtension();
+           $location = public_path('images/'. $filename);
+           Image::make($image)->resize(800, 400)->save($location);
+           
+           $oldfilename = $post->image;
+
+           $post->image = $filename;
+
+           Storage::delete($oldfilename);
+        }
+
         $post->save();
         $post->tags()->sync($request->tags);
         Session::flash('success', 'This post is updated successfully!');
@@ -165,6 +181,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->tags()->detach();
+        Storage::delete($post->image);
         $post->delete();
 
         Session::flash('success', 'This Post was deleted successfully!');

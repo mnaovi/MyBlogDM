@@ -24,7 +24,7 @@
 
              @include('includes.message')
            
-             <form action="{{ route('posts.update', $post->id) }}" method="post">
+             <form action="{{ route('posts.update', $post->id) }}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 {{method_field('PUT')}}
                 <div class="form-group">
@@ -78,6 +78,11 @@
                       </select>
                     </div>
                     
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Upload Image</label>
+                    <input class="form-control" type="file" name="image" id="image" value="{{$post->image}}">
                 </div>
 
                 <div class="form-group">
