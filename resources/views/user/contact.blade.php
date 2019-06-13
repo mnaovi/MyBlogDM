@@ -6,14 +6,15 @@
          <div class="col-md-12 ">
           <h1>Contact Me</h1>
           <hr>
-           <form>
-             <div class="form-group">
-               <label for="name">name</label>
-               <input type="text" id="name" name="name" class="form-control">
-             </div>
+           <form action="{{ url('contact')}}" method="post">
+            {{csrf_field()}}
              <div class="form-group">
                <label for="email">Email</label>
                <input type="text" id="email" name="email" class="form-control">
+             </div>
+             <div class="form-group">
+               <label for="subject">Subject</label>
+               <input type="text" id="subject" name="subject" class="form-control">
              </div>
              <div class="form-group">
                <label for="message">Message</label>

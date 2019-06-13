@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     @include('user.partials._head')
+
   </head>
   <body>
 

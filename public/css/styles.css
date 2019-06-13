@@ -1,0 +1,27 @@
+.btn-h1-spacing{
+
+	margin-top: 18px;
+}
+.comment{
+	margin-bottom: 34px;
+}
+.author-image{
+
+	width:  100px;
+	height: 100px;
+	border-radius: 30%;
+	float: left;
+
+}
+
+.author-name{
+	float: left;
+}
+
+.comment-content{
+	clear: both;
+	margin-left: 100px;
+}
+.author-title{
+	margin-bottom: 14px;
+}
