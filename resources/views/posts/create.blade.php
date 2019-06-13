@@ -20,7 +20,7 @@
 
 			 @include('includes.message')
 	       
-			 <form action="{{ route('posts.store') }}" method="post">
+			 <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
 			 	{{csrf_field()}}
 			 	<div class="form-group">
 				 	<label for="title">Post Title</label>
@@ -52,6 +52,11 @@
 				 	    </select>
 				 	</div>
 				 	
+			 	</div>
+
+			 	<div class="form-group">
+				 	<label for="image">Upload Image</label>
+				 	<input class="form-control" type="file" name="image" id="image">
 			 	</div>
 
 			 	<div class="form-group">
